@@ -1,0 +1,68 @@
+admin:
+    kelola notaris
+        tambah notaris -> notaris
+    data provinsi -> provinsi / indonesia_provinces
+    data kabupaten -> kabupaten / indonesia_cities
+    data kecamatan -> kecamatan / indonesia districts
+    data kelurahan -> kelurahan / indonesia_villages
+    - gelar belakang -> gelar_belakang
+    - gelar depan -> gelar_depan
+    - periode -> periode
+
+kelola user:
+    crud staff -> detil_user
+        user account -> user
+        data staff
+    crud corporate client -> corporate_client
+        user account -> user
+        data client
+
+akta umum:
+    crud jenis akta -> akta_notaris_jenis
+    crud proses jenis akta -> akta_notaris_jenis_proses
+    crud akta umum -> akta_notaris
+    crud daftar pihak -> akta_notaris_pihak
+    crud proses akta umum -> akta_notaris_proses
+    - transaksi
+    - laporan pencatatan PDF
+    - laporan pencatatan Excel
+
+akta badan hukum/usaha:
+    - crud jenis akta -> akta_badan_jenis
+    - crud sifat akta -> akta_badan_jenis_sifat
+    - crud akta badan -> akta_badan
+    - crud proses akta -> akta_badan_proses
+    - crud daftar_pihak -> akta_badan_pihak
+    - crud proses jenis akta -> akta_badan_jenis_proses
+    - transaksi
+    - laporan pencatatan PDF
+    - laporan pencatatan Excel
+
+akta ppat:
+    - crud jenis akta -> akta_ppat_jenis
+    - crud akta ppat -> akta_ppat
+    - crud daftar pihak -> akta_ppat_pihak
+    - crud proses akta ppat -> akta_ppat_proses
+    - crud proses jenis akta -> akta_ppat_jenis_proses
+    - transaksi
+    - laporan pencatatan PDF
+    - laporan pencatatan Excel
+
+surat bawah tangan:
+    - crud sifat surat -> sifat_surat
+    - crud surat bawah tangan -> surat_bawah_tangan
+    - crud surat bawah tangan pihak -> surat_bawah_tangan_pihak
+
+keuangan:
+    - crud kategori akun -> kategori_akun
+    - crud depresiasi -> depresiasi
+    - crud kelola akun -> akun
+    - laporan neraca
+    - laporan laba rugi
+
+credit:
+    - credit -> credit
+    - harga credit -> credit_price
+    - transaksi -> transaksi
+
+akta index by staff
