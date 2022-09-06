@@ -13,11 +13,6 @@ use Laravolt\Indonesia\Seeds\ProvincesSeeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
         User::create([
@@ -64,5 +59,7 @@ class DatabaseSeeder extends Seeder
         foreach ($akta_notaris_jenis as $akta) {
             AktaNotarisJenis::create($akta);
         }
+
+
     }
 }

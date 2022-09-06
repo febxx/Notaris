@@ -72,19 +72,19 @@
                         <span><i class="fa fa-user-secret"></i> Badan Hukum / Usaha</span>
                     </button>
                 </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                <div id="collapseTwo" class="accordion-collapse collapse {{ (Request::is('akta-badan*') ? 'show' : '') }}" aria-labelledby="headingTwo"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <ul class="nav">
                             <li class="nav-item">
                                 <a class="nav-link {{ (Request::is('dashboard') ? 'active' : '') }}"
-                                    href="{{ url('dashboard') }}">
+                                    href="{{ route('akta-badan.index') }}">
                                     <i class="fas fa-tachometer-alt"></i> Kelola Akta
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ (Request::is('kelola-notaris') ? 'active' : '') }} "
-                                    href="{{ url('kelola-notaris') }}">
+                                    href="{{ route('akta-badan-jenis-sifat.index') }}">
                                     <i class="fas fa-users"></i> Kelola Jenis Akta
                                 </a>
                             </li>

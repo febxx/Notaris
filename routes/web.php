@@ -12,9 +12,12 @@ use App\Http\Controllers\AktaNotarisJenisController;
 use App\Http\Controllers\AktaNotarisPihakController;
 use App\Http\Controllers\AktaNotarisProsesController;
 use App\Http\Controllers\AktaNotarisJenisProsesController;
+use App\Http\Controllers\AktaBadanController;
+use App\Http\Controllers\AktaBadanJenisController;
+use App\Http\Controllers\AktaBadanJenisSifatController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/dashboard');
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -28,11 +31,14 @@ Route::group(['middleware' => 'auth'], function () {
         'akta-notaris-proses' => AktaNotarisProsesController::class,
         'akta-notaris-jenis' => AktaNotarisJenisController::class,
         'akta-notaris-jenis-proses' => AktaNotarisJenisProsesController::class,
-
+        'akta-badan' => AktaBadanController::class,
+        'akta-badan-jenis' => AktaBadanJenisController::class,
+        'akta-badan-jenis-sifat' => AktaBadanJenisSifatController::class,
     ]);
     Route::post('getKabupaten', [PlaceController::class, 'getKabupaten']);
     Route::post('getKecamatan', [PlaceController::class, 'getKecamatan']);
     Route::post('getKelurahan', [PlaceController::class, 'getKelurahan']);
+    Route::post('getSifatAktaBadan', [AktaBadanController::class, 'getSifatAktaBadan']);
     Route::get('/logout', [LoginController::class, 'destroy']);
 });
 

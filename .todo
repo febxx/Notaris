@@ -28,9 +28,9 @@ akta umum:
     - laporan pencatatan Excel
 
 akta badan hukum/usaha:
-    - crud jenis akta -> akta_badan_jenis
-    - crud sifat akta -> akta_badan_jenis_sifat
-    - crud akta badan -> akta_badan
+    crud jenis akta -> akta_badan_jenis
+    crud sifat akta -> akta_badan_jenis_sifat
+    crud akta badan -> akta_badan
     - crud proses akta -> akta_badan_proses
     - crud daftar_pihak -> akta_badan_pihak
     - crud proses jenis akta -> akta_badan_jenis_proses
@@ -65,4 +65,6 @@ credit:
     - harga credit -> credit_price
     - transaksi -> transaksi
 
-akta index by staff
+additional:
+    - akta index by staff
+    - generate register utk akta lain
