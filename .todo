@@ -39,8 +39,8 @@ akta badan hukum/usaha:
     - laporan pencatatan Excel
 
 akta ppat:
-    - crud jenis akta -> akta_ppat_jenis
-    - crud akta ppat -> akta_ppat
+    crud jenis akta -> akta_ppat_jenis
+    crud akta ppat -> akta_ppat
     - crud daftar pihak -> akta_ppat_pihak
     - crud proses akta ppat -> akta_ppat_proses
     - crud proses jenis akta -> akta_ppat_jenis_proses

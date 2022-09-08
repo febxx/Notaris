@@ -15,6 +15,11 @@ use App\Http\Controllers\AktaNotarisJenisProsesController;
 use App\Http\Controllers\AktaBadanController;
 use App\Http\Controllers\AktaBadanJenisController;
 use App\Http\Controllers\AktaBadanJenisSifatController;
+use App\Http\Controllers\AktaPpatController;
+use App\Http\Controllers\AktaPpatProsesController;
+use App\Http\Controllers\AktaPpatPihakController;
+use App\Http\Controllers\AktaPpatJenisController;
+use App\Http\Controllers\AktaPpatJenisProsesController;
 
 Route::get('/', function () {
     return redirect('/dashboard');
@@ -34,7 +39,13 @@ Route::group(['middleware' => 'auth'], function () {
         'akta-badan' => AktaBadanController::class,
         'akta-badan-jenis' => AktaBadanJenisController::class,
         'akta-badan-jenis-sifat' => AktaBadanJenisSifatController::class,
+        'akta-ppat' => AktaPpatController::class,
+        'akta-ppat-pihak' => AktaPpatPihakController::class,
+        'akta-ppat-proses' => AktaPpatProsesController::class,
+        'akta-ppat-jenis' => AktaPpatJenisController::class,
+        'akta-ppat-jenis-proses' => AktaPpatJenisProsesController::class,
     ]);
+
     Route::post('getKabupaten', [PlaceController::class, 'getKabupaten']);
     Route::post('getKecamatan', [PlaceController::class, 'getKecamatan']);
     Route::post('getKelurahan', [PlaceController::class, 'getKelurahan']);

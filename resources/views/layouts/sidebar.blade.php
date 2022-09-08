@@ -40,7 +40,7 @@
                     <div class="accordion-body">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('dashboard') ? 'active' : '') }}" href="{{ route('akta-notaris.index') }}">
+                                <a class="nav-link {{ (Request::is('akta-notaris') ? 'active' : '') }}" href="{{ route('akta-notaris.index') }}">
                                     <i class="fas fa-tachometer-alt"></i> Kelola Akta
                                 </a>
                             </li>
@@ -105,25 +105,23 @@
                         <span><i class="fa fa-table"></i> Akta PPAT</span>
                     </button>
                 </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                <div id="collapseThree" class="accordion-collapse collapse {{ (Request::is('akta-ppat*') ? 'show' : '') }}" aria-labelledby="headingThree"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('dashboard') ? 'active' : '') }}"
-                                    href="{{ url('dashboard') }}">
+                                <a class="nav-link" href="{{ route('akta-ppat.index') }}">
                                     <i class="fas fa-tachometer-alt"></i> Kelola Akta
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('kelola-notaris') ? 'active' : '') }} "
-                                    href="{{ url('kelola-notaris') }}">
+                                <a class="nav-link" href="{{ route('akta-ppat-pihak.index') }}">
                                     <i class="fas fa-users"></i> Daftar Pihak
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('kelola-notaris') ? 'active' : '') }} "
-                                    href="{{ url('kelola-notaris') }}">
+                                <a class="nav-link"
+                                    href="{{ route('akta-ppat-jenis.index') }}">
                                     <i class="fas fa-users"></i> Kelola Jenis Akta
                                 </a>
                             </li>

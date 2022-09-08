@@ -6,6 +6,8 @@ use Auth;
 use App\Models\Staff;
 use App\Models\Client;
 use App\Models\Notaris;
+use App\Models\AktaPpat;
+use App\Models\AktaBadan;
 use App\Models\AktaNotaris;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -86,7 +88,7 @@ class AktaNotarisController extends Controller
     public function generateRegister($length = 8) {
 
         $randomString = strtoupper(Str::random($length));
-        if (!AktaNotaris::where('register', $randomString)->first() and !AktaBadan::where('register', $randomString)->first()) {
+        if (!AktaNotaris::where('register', $randomString)->first() and !AktaBadan::where('register', $randomString)->first() and !AktaPpat::where('register', $randomString)->first()) {
             return $randomString;
         } else {
             return $this->generateRegister();

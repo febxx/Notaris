@@ -68,7 +68,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="client">PIC</label>
+                        <label for="client">Corporate Client</label>
                         <select class="form-select form-select-lg" name="client_id" id="client">
                             <option disabled selected value>--- Pilih Client ---</option>
                             @foreach ($client as $id => $name)
