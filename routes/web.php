@@ -20,6 +20,7 @@ use App\Http\Controllers\AktaPpatProsesController;
 use App\Http\Controllers\AktaPpatPihakController;
 use App\Http\Controllers\AktaPpatJenisController;
 use App\Http\Controllers\AktaPpatJenisProsesController;
+use App\Http\Controllers\SuratSifatController;
 
 Route::get('/', function () {
     return redirect('/dashboard');
@@ -44,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
         'akta-ppat-proses' => AktaPpatProsesController::class,
         'akta-ppat-jenis' => AktaPpatJenisController::class,
         'akta-ppat-jenis-proses' => AktaPpatJenisProsesController::class,
+        'surat-sifat' => SuratSifatController::class,
     ]);
 
     Route::post('getKabupaten', [PlaceController::class, 'getKabupaten']);

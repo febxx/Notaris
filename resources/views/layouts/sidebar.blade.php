@@ -142,7 +142,7 @@
                         <span><i class="fa fa-files-o"></i> Surat Bawah Tangan</span>
                     </button>
                 </h2>
-                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                <div id="collapseFour" class="accordion-collapse collapse {{ (Request::is('surat-*') ? 'show' : '') }}" aria-labelledby="headingFour"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <ul class="nav">
@@ -153,8 +153,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('kelola-notaris') ? 'active' : '') }} "
-                                    href="{{ url('kelola-notaris') }}">
+                                <a class="nav-link" href="{{ route('surat-sifat.index') }}">
                                     <i class="fas fa-users"></i> Kelola Sifat Surat
                                 </a>
                             </li>

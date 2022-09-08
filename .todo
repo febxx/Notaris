@@ -41,15 +41,15 @@ akta badan hukum/usaha:
 akta ppat:
     crud jenis akta -> akta_ppat_jenis
     crud akta ppat -> akta_ppat
-    - crud daftar pihak -> akta_ppat_pihak
-    - crud proses akta ppat -> akta_ppat_proses
-    - crud proses jenis akta -> akta_ppat_jenis_proses
+    crud daftar pihak -> akta_ppat_pihak
+    crud proses akta ppat -> akta_ppat_proses
+    crud proses jenis akta -> akta_ppat_jenis_proses
     - transaksi
     - laporan pencatatan PDF
     - laporan pencatatan Excel
 
 surat bawah tangan:
-    - crud sifat surat -> sifat_surat
+    crud sifat surat -> surat_sifat
     - crud surat bawah tangan -> surat_bawah_tangan
     - crud surat bawah tangan pihak -> surat_bawah_tangan_pihak
 
