@@ -23,8 +23,8 @@ akta umum:
     crud akta umum -> akta_notaris
     crud daftar pihak -> akta_notaris_pihak
     crud proses akta umum -> akta_notaris_proses
-    - transaksi
-    - laporan pencatatan PDF
+    transaksi
+    laporan pencatatan PDF
     - laporan pencatatan Excel
 
 akta badan hukum/usaha:
@@ -34,8 +34,8 @@ akta badan hukum/usaha:
     - crud proses akta -> akta_badan_proses
     - crud daftar_pihak -> akta_badan_pihak
     - crud proses jenis akta -> akta_badan_jenis_proses
-    - transaksi
-    - laporan pencatatan PDF
+    transaksi
+    laporan pencatatan PDF
     - laporan pencatatan Excel
 
 akta ppat:
@@ -44,27 +44,28 @@ akta ppat:
     crud daftar pihak -> akta_ppat_pihak
     crud proses akta ppat -> akta_ppat_proses
     crud proses jenis akta -> akta_ppat_jenis_proses
-    - transaksi
-    - laporan pencatatan PDF
+    transaksi
+    laporan pencatatan PDF
     - laporan pencatatan Excel
 
 surat bawah tangan:
     crud sifat surat -> surat_sifat
-    - crud surat bawah tangan -> surat_bawah_tangan
-    - crud surat bawah tangan pihak -> surat_bawah_tangan_pihak
+    crud surat bawah tangan -> surat_bawah_tangan
+    crud surat bawah tangan pihak -> surat_bawah_tangan_pihak
 
 keuangan:
-    - crud kategori akun -> kategori_akun
-    - crud depresiasi -> depresiasi
-    - crud kelola akun -> akun
+    crud kategori akun -> kategori_akun
+    crud depresiasi -> depresiasi
+    crud kelola akun -> akun
+    transaksi -> transaksi
+    log transaksi
     - laporan neraca
     - laporan laba rugi
 
 credit:
     - credit -> credit
     - harga credit -> credit_price
-    - transaksi -> transaksi
 
 additional:
     - akta index by staff
-    - generate register utk akta lain
+    generate register utk akta lain

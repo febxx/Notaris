@@ -19,7 +19,9 @@
             </ul>
         </div>
         @endif
+        @if (!auth()->user()->isClient())
         <a href="{{ route('akta-notaris.create') }}" class="btn btn-dark">Tambah Akta</a>
+        @endif
         <table class="table table-bordered" id="akta-table">
             <thead class="thead-dark">
                 <tr>
@@ -43,7 +45,9 @@
                     <td>@if ($item->staff_id) {{ $item->staff->nama }} @else <small>(belum di set)</small> @endif</td>
                     <td>
                         <a href="{{route('akta-notaris.show', $item->id)}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                        @if (!auth()->user()->isClient())
                         <a href="{{route('akta-notaris.edit', $item->id)}}" class="btn btn-info"><i class="fa fa-pen"></i></a>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

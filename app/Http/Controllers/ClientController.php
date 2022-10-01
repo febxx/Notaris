@@ -44,8 +44,8 @@ class ClientController extends Controller
             'role' => 'client',
             'status' => '1'
         ]);
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $users = Auth::user();
+        $notaris = Notaris::where('user_id', $users->id)->first();
         $data = array_merge($validate, ['user_id' => $user->id, 'notaris_id' => $notaris->id]);
         Client::create($data);
         return redirect('kelola-client')->with('success', 'Berhasil menambah data Client.');

@@ -18,14 +18,21 @@ class AktaPpatController extends Controller
 {
     public function index()
     {
-        $data = AktaPpat::all()->sortBy('name');
+        $user = Auth::user();
+        if ($user->role == 'client') {
+            $client = Client::where('user_id', $user->id)->first();
+            $data = AktaPpat::where('client_id', $client->id)->get();
+        } elseif ($user->role == 'notaris') {
+            $notaris = Notaris::where('user_id', $user->id)->first();
+            $data = AktaPpat::where('notaris_id', $notaris->id)->get();
+        }
         return view('akta-ppat/index', compact('data'));
     }
 
     public function create()
     {
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $user = Auth::user();
+        $notaris = Notaris::where('user_id', $user->id)->first();
         $jenis = AktaPpatJenis::pluck('name', 'id');
         $staff = Staff::where('notaris_id', $notaris->id)->pluck('nama', 'id');
         $client = Client::where('notaris_id', $notaris->id)->pluck('nama', 'id');
@@ -62,8 +69,8 @@ class AktaPpatController extends Controller
             'ssb_nilai' => 'nullable',
             'keterangan' => 'nullable',
         ]);
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $user = Auth::user();
+        $notaris = Notaris::where('user_id', $user->id)->first();
         $register = $this->generateRegister();
         $data = array_merge($validate, ['notaris_id' => $notaris->id, 'register' => $register]);
         AktaPpat::create($data);
@@ -79,8 +86,8 @@ class AktaPpatController extends Controller
     public function edit($id)
     {
         $data = AktaPpat::find($id);
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $user = Auth::user();
+        $notaris = Notaris::where('user_id', $user->id)->first();
         $jenis = AktaPpatJenis::pluck('name', 'id');
         $staff = Staff::where('notaris_id', $notaris->id)->pluck('nama', 'id');
         $client = Client::where('notaris_id', $notaris->id)->pluck('nama', 'id');

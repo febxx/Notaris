@@ -22,9 +22,4 @@ class AktaNotarisPihak extends Model
     {
         return $this->belongsTo(Kelurahan::class, 'kelurahan_id');
     }
-
-    public function kecamatan()
-    {
-        return $this->hasMany(Kelurahan::class, 'district_code');
-    }
 }

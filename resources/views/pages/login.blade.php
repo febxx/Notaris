@@ -21,12 +21,12 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ url('register') }}">
                                     <i class="fas fa-user-circle opacity-6 me-1"></i>
                                     Register
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link me-2"
                                     href="{{ url('login') }}">

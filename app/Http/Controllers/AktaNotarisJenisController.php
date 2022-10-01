@@ -24,8 +24,8 @@ class AktaNotarisJenisController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate(['name' => 'required']);
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $user = Auth::user();
+        $notaris = Notaris::where('user_id', $user->id)->first();
         $data = array_merge($validate, ['notaris_id' => $notaris->id]);
         $jenis_akta = AktaNotarisJenis::create($data);
 

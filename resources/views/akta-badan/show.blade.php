@@ -9,7 +9,7 @@
         <form action="" method="post">
             <a href="{{route('akta-badan.index')}}" class="btn btn-warning"><i class="fa fa-backward"></i></a>
             <a href="{{route('akta-badan.edit', $data->id)}}" class="btn btn-primary"><i class="fa fa-pen"></i></a>
-            <a href="{{route('akta-badan-jenis.edit', $data->id)}}" class="btn btn-info">Biaya Masuk/Keluar</a>
+            <a href="{{route('transaksi.create')}}?akta=badan&id={{$data->id}}" class="btn btn-info">Biaya Masuk/Keluar</a>
             @csrf
             @method('DELETE')
             <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>

@@ -25,12 +25,13 @@ class AktaBadanController extends Controller
 
     public function create()
     {
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $user = Auth::user();
+        $notaris = Notaris::where('user_id', $user->id)->first();
         $jenis = AktaBadanJenis::pluck('name', 'id');
         $staff = Staff::where('notaris_id', $notaris->id)->pluck('nama', 'id');
         $client = Client::where('notaris_id', $notaris->id)->pluck('nama', 'id');
         $provinsi = Provinsi::pluck('name', 'code');
+
         return view('akta-badan/create', compact('jenis', 'staff', 'client', 'provinsi'));
     }
 
@@ -51,8 +52,8 @@ class AktaBadanController extends Controller
             'dusun' => 'nullable',
             'kelurahan_id' => 'nullable',
         ]);
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $user = Auth::user();
+        $notaris = Notaris::where('user_id', $user->id)->first();
         $register = $this->generateRegister();
         $data = array_merge($validate, ['notaris_id' => $notaris->id, 'register' => $register]);
         AktaBadan::create($data);
@@ -68,8 +69,8 @@ class AktaBadanController extends Controller
     public function edit($id)
     {
         $data = AktaBadan::find($id);
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $user = Auth::user();
+        $notaris = Notaris::where('user_id', $user->id)->first();
         $jenis = AktaBadanJenis::pluck('name', 'id');
         $sifat = AktaBadanJenisSifat::where('akta_badan_jenis_id', $data->jenis->id)->pluck('name', 'id');
         $staff = Staff::where('notaris_id', $notaris->id)->pluck('nama', 'id');

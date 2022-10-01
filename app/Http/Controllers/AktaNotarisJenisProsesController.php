@@ -41,8 +41,8 @@ class AktaNotarisJenisProsesController extends Controller
     public function update(Request $request, $id)
     {
         $jenis = AktaNotarisJenis::find($id);
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $user = Auth::user();
+        $notaris = Notaris::where('user_id', $user->id)->first();
 
         $proses_jenis = [];
 

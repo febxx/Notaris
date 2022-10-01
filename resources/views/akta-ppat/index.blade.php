@@ -19,9 +19,7 @@
             </ul>
         </div>
         @endif
-
-        <a href="{{ route('akta-ppat.create') }}" class="btn btn-dark">Tambah Jenis Akta</a>
-
+        <a href="{{ route('akta-ppat.create') }}" class="btn btn-dark">Tambah Akta</a>
         <table class="table table-bordered" id="akta-table">
             <thead class="thead-dark">
                 <tr>
@@ -47,12 +45,13 @@
                     <td>{{ $item->kelurahan->kecamatan->name }}</td>
                     <td>{{ $item->jenis->name }}</td>
                     <td>@if ($item->tanggal) {{ $item->tanggal }} @else <small>(belum di set)</small> @endif</td>
-                    <td></td>
                     <td>@if ($item->client_id) {{ $item->client->nama }} @else <small>(belum di set)</small> @endif</td>
                     <td>@if ($item->staff_id) {{ $item->staff->nama }} @else <small>(belum di set)</small> @endif</td>
                     <td>
                         <a href="{{route('akta-ppat.show', $item->id)}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                        @if (!auth()->user()->isClient())
                         <a href="{{route('akta-ppat.edit', $item->id)}}" class="btn btn-info"><i class="fa fa-pen"></i></a>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

@@ -22,6 +22,9 @@
                                         @if (auth()->user()->isNotaris())
                                         Notaris
                                         @endif
+                                        @if (auth()->user()->isClient())
+                                        Client
+                                        @endif
                                     </h5>
                                 </div>
                             </div>

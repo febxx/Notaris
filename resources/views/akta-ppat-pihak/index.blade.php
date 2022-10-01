@@ -44,7 +44,7 @@
                     <td>{{$item->kelurahan->kecamatan->name}}</td>
                     <td>{{$item->kelurahan->kecamatan->kabupaten->name}}</td>
                     <td>
-                        <a href="{{route('akta-ppat.show', $item->akta_notaris_id)}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                        <a href="{{route('akta-ppat.show', $item->akta_ppat_id)}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                     </td>
                 </tr>
                 @endforeach

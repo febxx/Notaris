@@ -57,7 +57,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('kelola-notaris') ? 'active' : '') }} " href="{{ url('kelola-notaris') }}">
+                                <a class="nav-link" href="{{ route('laporanget') }}?akta=notaris">
                                     <i class="fas fa-users"></i> Laporan Pencatatan Akta
                                 </a>
                             </li>
@@ -89,8 +89,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('kelola-notaris') ? 'active' : '') }} "
-                                    href="{{ url('kelola-notaris') }}">
+                                <a class="nav-link" href="{{ route('laporanget') }}?akta=badan">
                                     <i class="fas fa-users"></i> Laporan Pencatatan Akta
                                 </a>
                             </li>
@@ -126,8 +125,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('kelola-notaris') ? 'active' : '') }} "
-                                    href="{{ url('kelola-notaris') }}">
+                                <a class="nav-link" href="{{ route('laporanget') }}?akta=ppat">
                                     <i class="fas fa-users"></i> Laporan Pencatatan
                                 </a>
                             </li>
@@ -147,8 +145,7 @@
                     <div class="accordion-body">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('dashboard') ? 'active' : '') }}"
-                                    href="{{ url('dashboard') }}">
+                                <a class="nav-link" href="{{ route('surat-bawah-tangan.index') }}">
                                     <i class="fas fa-tachometer-alt"></i> Kelola Surat
                                 </a>
                             </li>
@@ -168,25 +165,22 @@
                         <span><i class="fa fa-money"></i> Keuangan</span>
                     </button>
                 </h2>
-                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                <div id="collapseFive" class="accordion-collapse collapse {{ (Request::is('akun*', 'transaksi*', 'keuangan*') ? 'show' : '') }}" aria-labelledby="headingFive"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('dashboard') ? 'active' : '') }}"
-                                    href="{{ url('dashboard') }}">
+                                <a class="nav-link" href="{{ route('transaksi.index') }}">
                                     <i class="fas fa-tachometer-alt"></i> Kelola Transaksi
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('kelola-notaris') ? 'active' : '') }} "
-                                    href="{{ url('kelola-notaris') }}">
+                                <a class="nav-link" href="{{ route('keuangan') }}">
                                     <i class="fas fa-users"></i> Laporan Keuangan
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('kelola-notaris') ? 'active' : '') }} "
-                                    href="{{ url('kelola-notaris') }}">
+                                <a class="nav-link" href="{{ route('akun.index') }}">
                                     <i class="fas fa-users"></i> Kelola Akun
                                 </a>
                             </li>
@@ -215,6 +209,51 @@
                                 <a class="nav-link {{ (Request::is('kelola-staff') ? 'active' : '') }} "
                                     href="{{ route('kelola-staff.index') }}">
                                     <i class="fas fa-users"></i> Staff
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+
+        @if (auth()->user()->isClient())
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button align-left" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <span><i class="fa fa-user-secret"></i> Akta Umum</span>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse {{ (Request::is('akta-notaris*') ? 'show' : '') }}" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('akta-notaris.index') }}">
+                                    <i class="fas fa-tachometer-alt"></i> Status Pembuatan Akta
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span><i class="fa fa-table"></i> Akta PPAT</span>
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse {{ (Request::is('akta-ppat*') ? 'show' : '') }}" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('akta-ppat.index') }}">
+                                    <i class="fas fa-tachometer-alt"></i> Status Pembuatan Akta
                                 </a>
                             </li>
                         </ul>

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Notaris;
+use App\Models\KategoriAkun;
 use App\Models\AktaNotarisJenis;
 use Laravolt\Indonesia\Seeds\CitiesSeeder;
 use Laravolt\Indonesia\Seeds\VillagesSeeder;
@@ -15,32 +16,11 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        User::create([
-            'username' => 'admin',
-            'password' => bcrypt('admin'),
-            'role' => 'admin'
-        ]);
+        $this->call([ProvincesSeeder::class, CitiesSeeder::class, DistrictsSeeder::class, VillagesSeeder::class,]);
 
-        $this->call([
-            ProvincesSeeder::class,
-            CitiesSeeder::class,
-            DistrictsSeeder::class,
-            VillagesSeeder::class,
-        ]);
-
-
-        User::create([
-            'username' => 'laras',
-            'password' => bcrypt('laras'),
-            'role' => 'notaris',
-            'status' => '1'
-        ]);
-        Notaris::create([
-            'nama' => 'Larasati',
-            'email' => 'laras@gmail.com	',
-            'telepon' => '0878889982121',
-            'user_id' => '2'
-        ]);
+        User::create(['username' => 'admin', 'password' => bcrypt('admin'), 'role' => 'admin']);
+        User::create(['username' => 'laras', 'password' => bcrypt('laras'), 'role' => 'notaris', 'status' => '1']);
+        Notaris::create(['nama' => 'Larasati', 'email' => 'laras@gmail.com', 'telepon' => '0878889982121', 'user_id' => '2']);
 
         $akta_notaris_jenis = [
             ['name' => 'Perjanjian Sewa Menyewa','notaris_id' => '1',],
@@ -55,11 +35,13 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Wasiat','notaris_id' => '1',],
             ['name' => 'Berita Acara','notaris_id' => '1',],
         ];
-
         foreach ($akta_notaris_jenis as $akta) {
             AktaNotarisJenis::create($akta);
         }
 
-
+        $kategori_akun = ['Kas & Bank', 'Akun Piutang', 'Aktiva Lancar', 'Aktiva Tetap', 'Akun Hutang', 'Kewajiban Lancar', 'Kewajiban Jangka Panjang', 'Ekuitas', 'Pendapatan Utama', 'Beban', 'Pendapatan Lainnya', 'Beban Lainnya', 'Depresiasi'];
+        foreach ($kategori_akun as $value) {
+            KategoriAkun::create(['name' => $value]);
+        }
     }
 }

@@ -23,10 +23,11 @@
         <table class="table table-bordered" id="akta-table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Nomor</th>
+                    <th scope="col">#</th>
                     <th scope="col">Akta Badan</th>
                     <th scope="col">Jenis</th>
                     <th scope="col">Sifat</th>
+                    <th scope="col">Nomor</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Client</th>
                     <th scope="col">PIC</th>
@@ -36,10 +37,11 @@
             <tbody>
                 @foreach ($data as $item)
                 <tr>
-                    <td>{{ $item->nomor }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->jenis->name }}</td>
                     <td>{{ $item->sifat->name }}</td>
+                    <td>{{ $item->nomor }}</td>
                     <td>@if ($item->tanggal) {{ $item->tanggal }} @else <small>(belum di set)</small> @endif</td>
                     <td>@if ($item->client_id) {{ $item->client->nama }} @else <small>(belum di set)</small> @endif</td>
                     <td>@if ($item->staff_id) {{ $item->staff->nama }} @else <small>(belum di set)</small> @endif</td>

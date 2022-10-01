@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Models\User;
 use App\Models\Staff;
 use App\Models\Client;
 use App\Models\Notaris;
@@ -17,14 +18,21 @@ class AktaNotarisController extends Controller
 {
     public function index()
     {
-        $data = AktaNotaris::all()->sortBy('name');
+        $user = Auth::user();
+        if ($user->role == 'client') {
+            $client = Client::where('user_id', $user->id)->first();
+            $data = AktaNotaris::where('client_id', $client->id)->get();
+        } elseif ($user->role == 'notaris') {
+            $notaris = Notaris::where('user_id', $user->id)->first();
+            $data = AktaNotaris::where('notaris_id', $notaris->id)->get();
+        }
         return view('akta-notaris/index', compact('data'));
     }
 
     public function create()
     {
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $user = Auth::user();
+        $notaris = Notaris::where('user_id', $user->id)->first();
         $jenis = AktaNotarisJenis::where('notaris_id', $notaris->id)->pluck('name', 'id');
         $staff = Staff::where('notaris_id', $notaris->id)->pluck('nama', 'id');
         $client = Client::where('notaris_id', $notaris->id)->pluck('nama', 'id');
@@ -41,8 +49,8 @@ class AktaNotarisController extends Controller
             'staff_id' => 'nullable',
             'client_id' => 'nullable',
         ]);
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $user = Auth::user();
+        $notaris = Notaris::where('user_id', $user->id)->first();
         $register = $this->generateRegister();
         $data = array_merge($validate, ['notaris_id' => $notaris->id, 'register' => $register]);
         AktaNotaris::create($data);
@@ -58,8 +66,8 @@ class AktaNotarisController extends Controller
     public function edit($id)
     {
         $data = AktaNotaris::find($id);
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $user = Auth::user();
+        $notaris = Notaris::where('user_id', $user->id)->first();
         $jenis = AktaNotarisJenis::where('notaris_id', $notaris->id)->pluck('name', 'id');
         $staff = Staff::where('notaris_id', $notaris->id)->pluck('nama', 'id');
         $client = Client::where('notaris_id', $notaris->id)->pluck('nama', 'id');

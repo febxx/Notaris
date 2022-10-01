@@ -22,8 +22,8 @@ class SuratSifatController extends Controller
 
     public function store(Request $request)
     {
-        $notaris_user = Auth::user();
-        $notaris = Notaris::where('user_id', $notaris_user->id)->first();
+        $user = Auth::user();
+        $notaris = Notaris::where('user_id', $user->id)->first();
         $data = array_merge($request->all(), ['notaris_id' => $notaris->id]);
         SuratSifat::create($data);
         return redirect('surat-sifat')->with('success', 'Berhasil menambah data.');

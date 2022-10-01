@@ -30,7 +30,7 @@ class AktaBadanJenisController extends Controller
             }
         }
 
-        return redirect('akta-badan-jenis')->with('success', 'Berhasil menambahkan data baru.');
+        return redirect('akta-badan-jenis-sifat')->with('success', 'Berhasil menambahkan data baru.');
     }
 
     public function show($id)

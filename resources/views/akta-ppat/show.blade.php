@@ -11,7 +11,7 @@
             <a href="{{route('akta-ppat.edit', $data->id)}}" class="btn btn-primary"><i class="fa fa-pen"></i></a>
             <a href="{{route('akta-ppat-pihak.create')}}?id={{$data->id}}" class="btn btn-info">Tambah Pihak</a>
             <a href="{{route('akta-ppat-proses.edit', $data->id)}}" class="btn btn-info">Update Proses</a>
-            <a href="{{route('akta-ppat-jenis.edit', $data->id)}}" class="btn btn-info">Biaya Masuk/Keluar</a>
+            <a href="{{route('transaksi.create')}}?akta=ppat&id={{$data->id}}" class="btn btn-info">Biaya Masuk/Keluar</a>
             @csrf
             @method('DELETE')
             <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>

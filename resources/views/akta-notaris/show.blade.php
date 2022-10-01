@@ -6,12 +6,12 @@
     @include('layouts.nav')
     <div class="container-fluid py-4">
         <h3>{{$data->nama}}</h3>
-        <form action="" method="post">
+        <form action="{{route('akta-notaris.destroy', $data->id)}}" method="post">
             <a href="{{route('akta-notaris.index')}}" class="btn btn-warning"><i class="fa fa-backward"></i></a>
             <a href="{{route('akta-notaris.edit', $data->id)}}" class="btn btn-primary"><i class="fa fa-pen"></i></a>
             <a href="{{route('akta-notaris-pihak.create')}}?id={{$data->id}}" class="btn btn-info">Tambah Pihak</a>
             <a href="{{route('akta-notaris-proses.edit', $data->id)}}" class="btn btn-info">Update Proses</a>
-            <a href="{{route('akta-notaris-jenis.edit', $data->id)}}" class="btn btn-info">Biaya Masuk/Keluar</a>
+            <a href="{{route('transaksi.create')}}?akta=notaris&id={{$data->id}}" class="btn btn-info">Biaya Masuk/Keluar</a>
             @csrf
             @method('DELETE')
             <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
@@ -97,10 +97,17 @@
                         <td>{{$pihak->rt}}</td>
                         <td>{{$pihak->rw}}</td>
                         <td>{{$pihak->dusun}}</td>
+                        @if($pihak->kelurahan_id)
                         <td>{{$pihak->kelurahan->name}}</td>
                         <td>{{$pihak->kelurahan->kecamatan->name}}</td>
                         <td>{{$pihak->kelurahan->kecamatan->kabupaten->name}}</td>
                         <td>{{$pihak->kelurahan->kecamatan->kabupaten->provinsi->name}}</td>
+                        @else
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        @endif
                         <td>
                             <a href="{{route('akta-notaris-pihak.edit', $pihak->id)}}?id={{$data->id}}" class="btn btn-info"><i class="fa fa-pen"></i></a>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $pihak->id }}"><i class="fa fa-trash"></i></button>

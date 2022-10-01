@@ -40,9 +40,16 @@
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->alamat }}</td>
                     <td>{{ $item->dusun }}</td>
+                    @if($item->kelurahan_id)
                     <td>{{ $item->kelurahan->name }}</td>
                     <td>{{$item->kelurahan->kecamatan->name}}</td>
                     <td>{{$item->kelurahan->kecamatan->kabupaten->name}}</td>
+                    @else
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    @endif
+
                     <td>
                         <a href="{{route('akta-notaris.show', $item->akta_notaris_id)}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                     </td>
